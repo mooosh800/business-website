@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -13,21 +13,21 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background-color: #f7f6f2;
-  color: #0b1f2a;
-  font-family: Tajawal, Cairo, system-ui, sans-serif;
+  background-color: #04050a;
+  color: #f6f7ff;
+  font-family: 'IBM Plex Sans Arabic', Tajawal, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 :focus-visible {
-  outline: 3px solid #c9a227;
+  outline: 3px solid #d8b45a;
   outline-offset: 3px;
 }
 
 ::selection {
-  background-color: #c9a227;
-  color: #07171f;
+  background-color: #d8b45a;
+  color: #04050a;
 }
 
 @layer components {
@@ -36,24 +36,84 @@ body {
   }
 
   .eyebrow {
-    @apply text-xs font-bold uppercase tracking-[0.18em] text-accentDark;
+    @apply text-xs font-semibold uppercase tracking-[0.24em] text-gold;
   }
 
-  .eyebrow-light {
-    @apply text-xs font-bold uppercase tracking-[0.18em] text-accent;
+  .eyebrow-silver {
+    @apply text-xs font-semibold uppercase tracking-[0.24em] text-silver/70;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-bold text-inkDeep shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-accentDark focus-visible:-translate-y-0.5;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-void shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-star focus-visible:-translate-y-0.5;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-sm font-bold text-ink transition duration-300 hover:border-accent hover:text-accentDark focus-visible:border-accent;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-silver/30 px-6 py-3 text-sm font-bold text-star transition duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold focus-visible:-translate-y-0.5;
   }
 
   .card-surface {
-    @apply rounded-3xl border border-line bg-surface p-7 shadow-soft sm:p-9;
+    @apply rounded-3xl border border-line bg-surface/70 p-7 shadow-soft backdrop-blur-sm sm:p-9;
   }
+
+  .image-frame {
+    @apply overflow-hidden rounded-3xl border border-line bg-night shadow-soft;
+  }
+}
+
+.star-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star-dot {
+  position: absolute;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(246, 247, 255, 0.65);
+  animation: twinkle var(--twinkle-duration) ease-in-out var(--twinkle-delay) infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.12;
+    transform: translateY(0) scale(0.8);
+  }
+  to {
+    opacity: var(--twinkle-opacity);
+    transform: translateY(-10px) scale(1.15);
+  }
+}
+
+.page-enter {
+  animation: page-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

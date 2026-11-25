@@ -23,16 +23,15 @@ export function Seo({ title, description }: SeoProps) {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const fullTitle = `${title} | ${businessConfig.name}`;
+    const fullTitle = `${title} | ${businessConfig.displayName}`;
     const canonicalUrl = new URL(pathname, businessConfig.siteUrl).href;
 
     document.title = fullTitle;
     setMeta('description', description);
-    setMeta('og:title', fullTitle);
-    setMeta('og:description', description);
-    setMeta('og:url', canonicalUrl);
-    setMeta('og:type', 'website');
-    setMeta('twitter:card', 'summary_large_image');
+    setMeta('og:title', fullTitle, 'property');
+    setMeta('og:description', description, 'property');
+    setMeta('og:url', canonicalUrl, 'property');
+    setMeta('og:type', 'website', 'property');
     setMeta('twitter:title', fullTitle);
     setMeta('twitter:description', description);
 

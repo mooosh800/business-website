@@ -10,7 +10,8 @@ export default {
         sans: [...themeConfig.fontFamily.arabic],
       },
       boxShadow: {
-        soft: '0 18px 50px -24px rgba(11, 31, 42, 0.35)',
+        glow: '0 0 70px -22px rgba(216, 180, 90, 0.55)',
+        soft: '0 28px 80px -34px rgba(0, 0, 0, 0.95)',
       },
     },
   },

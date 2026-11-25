@@ -1,6 +1,6 @@
-# Business Website
+# مَجَرّة | MAJARRAH
 
-A three-page Arabic-first commercial website built with React, TypeScript, Vite, Tailwind CSS, React Router, and Lucide icons.
+A three-page Arabic-first cosmic brand website built with React, TypeScript, Vite, Tailwind CSS, React Router, and Lucide icons.
 
 ## Pages
 
@@ -9,21 +9,25 @@ A three-page Arabic-first commercial website built with React, TypeScript, Vite,
 - `/contact` — Contact
 - `*` — Simple 404 page
 
-## Edit business data
+## Edit central data
 
-All editable business data is in `src/config/business.ts`:
+All business content is in `src/config/business.ts`:
 
-- business name and type
+- brand name and display name
 - hero description and tagline
 - about text
-- the three services
+- the three services, their descriptions, notes, and images
 - WhatsApp number and address
 - optional Google Maps URL
 - canonical site URL
 
-Visual identity colors and font stack are in `src/config/theme.ts`. UI translations for Arabic and future English support are in `src/config/i18n.ts`.
+Visual identity colors, font stack, and star density are in `src/config/theme.ts`. Arabic and future English UI strings are in `src/config/i18n.ts`.
 
-WhatsApp links are generated in `src/utils/whatsapp.ts`. Replace the placeholder number in `business.ts` with the real number including country code; all buttons update automatically.
+WhatsApp links are generated in `src/utils/whatsapp.ts`. Every button reads the number from the central config, and each service button includes the selected service name in the prepared message.
+
+## Images
+
+Space imagery in `public/images/` and `public/og-cover.jpg` is sourced from NASA's public image library and optimized for the web.
 
 ## Run and build
 

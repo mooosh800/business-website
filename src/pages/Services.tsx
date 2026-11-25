@@ -1,11 +1,8 @@
-import { BadgeCheck, Layers3, Sparkles, type LucideIcon } from 'lucide-react';
 import { businessConfig } from '../config/business';
 import { useLocale } from '../context/LocaleContext';
 import { Seo } from '../components/Seo';
 import { WhatsAppButton } from '../components/WhatsAppButton';
 import { buildServiceWhatsAppUrl } from '../utils/whatsapp';
-
-const serviceIcons: LucideIcon[] = [Sparkles, Layers3, BadgeCheck];
 
 export function Services() {
   const { t } = useLocale();
@@ -14,49 +11,64 @@ export function Services() {
     <>
       <Seo title={t.services.title} description={businessConfig.about} />
 
-      <section className="bg-ink py-20 text-paper">
-        <div className="container-shell">
-          <p className="eyebrow-light">{businessConfig.type}</p>
-          <h1 className="mt-4 text-5xl font-extrabold sm:text-6xl">{t.services.title}</h1>
-          <p className="mt-5 max-w-2xl text-lg text-paper/75">{t.services.intro}</p>
+      <section className="relative isolate overflow-hidden border-b border-line bg-void py-24">
+        <img
+          src={businessConfig.hero.image}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/80 to-void/40" />
+        <div className="container-shell relative">
+          <p className="eyebrow">{businessConfig.displayName}</p>
+          <h1 className="mt-5 text-5xl font-bold text-star sm:text-6xl">{t.services.title}</h1>
+          <p className="mt-5 max-w-2xl text-lg text-silver/80">{t.services.intro}</p>
         </div>
       </section>
 
-      {businessConfig.services.map((service, index) => {
-        const Icon = serviceIcons[index];
-        return (
-          <section
-            key={service.id}
-            className={index % 2 === 0 ? 'bg-paper' : 'bg-surface'}
-            aria-labelledby={`${service.id}-title`}
-          >
-            <div className="container-shell grid gap-8 py-16 lg:grid-cols-[0.35fr_1.2fr_0.9fr] lg:items-center lg:py-20">
-              <div className="flex items-center gap-4">
-                <span className="text-5xl font-extrabold text-accentDark">
-                  0{index + 1}
-                </span>
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-paper">
-                  <Icon aria-hidden="true" size={24} />
-                </span>
-              </div>
+      {businessConfig.services.map((service, index) => (
+        <section
+          key={service.id}
+          className="container-shell py-16 lg:py-24"
+          aria-labelledby={`${service.id}-title`}
+        >
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+            <div className="image-frame float-slow">
+              <img
+                src={service.image}
+                alt={service.name}
+                loading="lazy"
+                className="h-[300px] w-full object-cover sm:h-[380px]"
+              />
+            </div>
 
-              <div>
-                <h2 id={`${service.id}-title`} className="text-3xl font-extrabold text-ink">
-                  {service.name}
-                </h2>
-                <p className="mt-4 max-w-xl leading-loose text-muted">{service.description}</p>
-              </div>
-
-              <div className="lg:justify-self-end">
+            <div>
+              <p className="text-5xl font-bold text-gold/80">0{index + 1}</p>
+              <h2
+                id={`${service.id}-title`}
+                className="mt-5 text-3xl font-bold leading-snug text-star sm:text-4xl"
+              >
+                {service.name}
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-loose text-silver/85">
+                {service.description}
+              </p>
+              {'note' in service && service.note && (
+                <p className="mt-4 max-w-xl border-r-2 border-gold/60 pr-4 text-sm leading-loose text-muted">
+                  {service.note}
+                </p>
+              )}
+              <div className="mt-9">
                 <WhatsAppButton
-                  href={buildServiceWhatsAppUrl(service.name)}
                   label={t.services.request}
+                  href={buildServiceWhatsAppUrl(service.name)}
                 />
               </div>
             </div>
-          </section>
-        );
-      })}
+          </div>
+        </section>
+      ))}
     </>
   );
 }
