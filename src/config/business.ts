@@ -3,7 +3,7 @@
  * Placeholders are intentional — replace them with real business information.
  */
 export const businessConfig = {
-  siteUrl: 'https://business-website.pages.dev/',
+  siteUrl: 'https://business-website-45c.pages.dev/',
 
   name: 'مجره',
   type: '[مجال النشاط]',

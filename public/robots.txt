@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://business-website.pages.dev/sitemap.xml
+Sitemap: https://business-website-45c.pages.dev/sitemap.xml
